@@ -26,6 +26,10 @@ describe('fetch mock upgrade', () => {
             success: true,
         }
 
-        expect(fetchMock.get('http://example.com/my-url', a).constructor).toStrictEqual(b.constructor);
+        fetchMock.get('http://example.com/my-url', a);
+
+        const response = await makeRequest();
+
+        expect(response.constructor).toStrictEqual(b.constructor);
     });
 });
